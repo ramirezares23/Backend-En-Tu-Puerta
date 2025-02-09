@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use app\Models\Petition;
 
 class User extends Authenticatable
 {
@@ -18,10 +19,27 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'first_name',
+        'last_name',
+        'email_verified_at',
         'password',
+        'address',
+        'schedules',
+        'schedules',
+        'images_paths',
+        'punctuation',
     ];
+    public function petitions(){
+        return $this->hasMany(Petition::class);
+    }
+
+    public function services(){
+        return $this->hasMany(Service::class);
+    }
+
+    //TODO: Visto bueno con equipo
+
+
 
     /**
      * The attributes that should be hidden for serialization.

@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use App\Models\User;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('petitions', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(User::class,'id_user')->constrained()->onDelete('cascade');
+            $table->bigInteger('amount_cents');
+            $table->text('description');
+            
+            $table->string('type',20);
+            $table->string('area',50);
+
+            $table->timestamp('datetime');
+            $table->string('status',50);
+
+            $table->timestamps(); // created_at and updated_at
+
+            //TODO: Visto bueno con equipo
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('petitions');
+    }
+};
