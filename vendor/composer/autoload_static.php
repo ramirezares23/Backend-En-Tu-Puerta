@@ -593,14 +593,17 @@ class ComposerStaticInite08334651ce0b12e409af9e125ee397d
     );
 
     public static $classMap = array (
-        'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
+        'App\\Http\\Controllers\\Api\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AuthController.php',
+        'App\\Http\\Controllers\\Api\\V1\\PetitionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/PetitionController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\PetitionController' => __DIR__ . '/../..' . '/app/Http/Controllers/PetitionController.php',
-        'App\\Http\\Controllers\\ServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServiceController.php',
+        'App\\Http\\Requests\\Api\\LoginUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/LoginUserRequest.php',
+        'App\\Http\\Requests\\Api\\V1\\StorePetitionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/V1/StorePetitionRequest.php',
+        'App\\Http\\Requests\\Api\\V1\\UpdatePetitionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/V1/UpdatePetitionRequest.php',
         'App\\Models\\Petition' => __DIR__ . '/../..' . '/app/Models/Petition.php',
         'App\\Models\\Service' => __DIR__ . '/../..' . '/app/Models/Service.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
+        'App\\Traits\\ApiResponses' => __DIR__ . '/../..' . '/app/Traits/ApiResponses.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
@@ -722,6 +725,7 @@ class ComposerStaticInite08334651ce0b12e409af9e125ee397d
         'Database\\Factories\\ServiceFactory' => __DIR__ . '/../..' . '/database/factories/ServiceFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\ServiceSeeder' => __DIR__ . '/../..' . '/database/seeders/ServiceSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
         'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',

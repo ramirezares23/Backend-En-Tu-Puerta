@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use App\Models\Service;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Petition>
@@ -17,13 +19,14 @@ class PetitionFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_user' => fake()->number(),
+            'id_user' => User::factory(),
             'amount_cents' => fake()->randomFloat(2, 0, 5000),
             'description' => fake()->sentence(),
-            'type' => fake()->jobTitle(),
-            'area' => fake()->jobTitle(),
+            'type' => fake()->randomElement(["Belleza"]),
+            'area' => fake()->randomElement(["Peluqueria","Manicura","Pedicura","Estilista general"]),
             'datetime' => now(),
-            'status' => fake()->sentence(1),
+            'status' => fake()->randomElement(["Enviada","Aceptada","Sin respuesta"]), //TODO: Corregir
+            'id_service' => Service::factory(),
         ];
     }
 

@@ -6,14 +6,17 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
+    'App\\Http\\Controllers\\Api\\AuthController' => $baseDir . '/app/Http/Controllers/Api/AuthController.php',
+    'App\\Http\\Controllers\\Api\\V1\\PetitionController' => $baseDir . '/app/Http/Controllers/Api/V1/PetitionController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
-    'App\\Http\\Controllers\\PetitionController' => $baseDir . '/app/Http/Controllers/PetitionController.php',
-    'App\\Http\\Controllers\\ServiceController' => $baseDir . '/app/Http/Controllers/ServiceController.php',
+    'App\\Http\\Requests\\Api\\LoginUserRequest' => $baseDir . '/app/Http/Requests/Api/LoginUserRequest.php',
+    'App\\Http\\Requests\\Api\\V1\\StorePetitionRequest' => $baseDir . '/app/Http/Requests/Api/V1/StorePetitionRequest.php',
+    'App\\Http\\Requests\\Api\\V1\\UpdatePetitionRequest' => $baseDir . '/app/Http/Requests/Api/V1/UpdatePetitionRequest.php',
     'App\\Models\\Petition' => $baseDir . '/app/Models/Petition.php',
     'App\\Models\\Service' => $baseDir . '/app/Models/Service.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
+    'App\\Traits\\ApiResponses' => $baseDir . '/app/Traits/ApiResponses.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Brick\\Math\\BigDecimal' => $vendorDir . '/brick/math/src/BigDecimal.php',
     'Brick\\Math\\BigInteger' => $vendorDir . '/brick/math/src/BigInteger.php',
@@ -135,6 +138,7 @@ return array(
     'Database\\Factories\\ServiceFactory' => $baseDir . '/database/factories/ServiceFactory.php',
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
+    'Database\\Seeders\\ServiceSeeder' => $baseDir . '/database/seeders/ServiceSeeder.php',
     'DateError' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
     'DateException' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
     'DateInvalidOperationException' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',

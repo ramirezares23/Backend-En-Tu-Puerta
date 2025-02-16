@@ -18,8 +18,8 @@ class ServiceFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            'service_name' => 'Servicio ' . fake()->randomDigit(), //TODO: corregir este
+            'id_provider' => User::factory(),
+            'service_name' => 'Servicio de ' . fake()->randomElement(["Peluqueria","Manicura","Pedicura","Estilista general"]),
             'service_price' => fake()->randomFloat(2, 0),
         ];
     }

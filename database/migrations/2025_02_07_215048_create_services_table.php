@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\User::class);
+            $table->foreignIdFor(\App\Models\User::class, 'id_provider')->constrained()->onDelete('cascade');
             $table->string('service_name');
             $table->float('service_price');
             $table->timestamps();

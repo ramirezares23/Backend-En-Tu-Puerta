@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\User;
+use App\Models\Service;
 
 return new class extends Migration
 {
@@ -23,6 +24,8 @@ return new class extends Migration
 
             $table->timestamp('datetime');
             $table->string('status',50);
+
+            $table->foreignIdFor(Service::class,'id_service')->constrained()->onDelete('cascade');
 
             $table->timestamps(); // created_at and updated_at
 

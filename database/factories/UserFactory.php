@@ -24,7 +24,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-                'code' => fake()->realTextBetween(2,8), //TODO: corregir este
+            'code' => fake()->numberBetween(25000000, 31000000), //TODO: corregir este
 
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
@@ -32,22 +32,26 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
 
-            'phone_number' => fake()->phoneNumber(),
+            'phone_number' => fake()->randomElement([
+                "0412", "0414", "0416", "0424", "0426"
+                ]) 
+                .
+                fake()->numberBetween(9999999, 1000000),
 
-            'identity_document' => fake()->numerify(), //TODO: corregir este
+            'identity_document' => fake()->numberBetween(25000000, 31000000),
 
-            'password' => fake()->password(),
-            //'password' => static::$password ??= Hash::make('password'),
+            // 'password' => fake()->password(),
+            'password' => static::$password ??= Hash::make('password'),
 
             'address' => fake()->address(),
             'terms_and_conditions_accept' => fake()->boolean(),
             'schedules' => json_encode(fake()->dayOfWeek()),
 
-            'type' => fake()->jobTitle(),
-            'area' => fake()->jobTitle(),
+            'type' => fake()->randomElement(["Belleza"]),
+            'area' => fake()->randomElement(["Peluqueria", "Manicura", "Pedicura", "Estilista general"]),
 
             'images_paths' => json_encode(fake()->url()),
-            'punctuation' => fake()->numberBetween(0,5),
+            'punctuation' => fake()->numberBetween(0, 5),
 
             'remember_token' => Str::random(10),
         ];
