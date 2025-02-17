@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use app\Models\Petition;
+use App\Models\Petition;
 
 class Service extends Model
 {
@@ -17,10 +17,10 @@ class Service extends Model
     ];
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'id_provider');
     }
 
     public function petitions(){
-        return $this->hasMany(Petition::class);
+        return $this->hasMany(Petition::class, 'id_service');
     }
 }

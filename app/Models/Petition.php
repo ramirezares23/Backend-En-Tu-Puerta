@@ -19,11 +19,11 @@ class Petition extends Model
     ];
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'id_user');
     }
     public function service()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(Service::class,'id_service');
     }
 
     //TODO: Visto bueno con equipo

@@ -4,6 +4,8 @@ namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\V1\UserResource;
+use App\Http\Resources\V1\ServiceResource;
 
 class PetitionResource extends JsonResource
 {
@@ -18,16 +20,32 @@ class PetitionResource extends JsonResource
             'type' => 'petition',
             'id' => $this->id,
             'attributes' => [
-                'id_user' => $this->id,
+                'id_user' => $this->id_user,
                 'amount_cents' => $this->amount_cents,
                 'description' => $this->description,
                 'type' => $this->type,
                 'area' => $this->area,
                 'datetime' => $this->datetime,
                 'status' => $this->status,
-                'service' => $this->status,
+                'service' => $this->id_service,
             ],
             'relationships' => [
+                'client' => [
+                    'data' => [
+                        'type' => 'user',
+                        'id' => $this->id_user,
+                    ],
+                    'links' => [
+                        [
+                            'self' => route(
+                                'users.show',
+                                [
+                                    'user' => $this->id_user
+                                ]
+                            )
+                        ]
+                    ]
+                ],
                 'service' => [
                     'data' => [
                         'type' => 'service',
@@ -44,6 +62,10 @@ class PetitionResource extends JsonResource
                         ]
                     ]
                 ]
+            ],
+            'includes' => [
+                new UserResource($this->user),
+                new ServiceResource($this->service),
             ],
             'links' => [
                 [

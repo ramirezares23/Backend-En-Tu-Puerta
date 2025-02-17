@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use app\Models\Petition;
-use app\Models\Service;
-
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -32,11 +29,11 @@ class User extends Authenticatable
         'punctuation',
     ];
     public function petitions(){
-        return $this->hasMany(Petition::class);
+        return $this->hasMany(Petition::class,'id_user');
     }
 
     public function services(){
-        return $this->hasMany(Service::class);
+        return $this->hasMany(Service::class,'id_provider');
     }
 
     //TODO: Visto bueno con equipo
