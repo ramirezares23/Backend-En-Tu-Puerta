@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\Api\V1;
 
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use App\Http\Requests\Api\V1\User\StoreUserRequest;
 use App\Http\Requests\Api\V1\User\UpdateUserRequest;
 use App\Http\Resources\V1\UserResource;
 use App\Models\User;
 
-class UserController extends Controller
+class UserController extends ApiController
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        if($this->include('petitions')){
+            return UserResource::collection(User::with('petitions')->paginate());
+        }
         return UserResource::collection(User::paginate());
     }
 
@@ -32,6 +35,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        if($this->include('petitions')){
+            return new UserResource($user->load('petitions'));
+        }
         return new UserResource($user);
     }
 

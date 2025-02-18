@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
+use App\Http\Filters\V1\ServiceFilter;
 use App\Http\Requests\Api\V1\Service\StoreServiceRequest;
 use App\Http\Requests\Api\V1\Service\UpdateServiceRequest;
 use App\Http\Resources\V1\ServiceResource;
 use App\Models\Service;
 
-class ServiceController extends Controller
+class ServiceController extends ApiController
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(ServiceFilter $filters)
     {
-        return ServiceResource::collection(Service::paginate());
+        return ServiceResource::collection(Service::filter($filters)->paginate());
     }
 
     /**

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Filters\V1\QueryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
@@ -22,5 +24,9 @@ class Service extends Model
 
     public function petitions(){
         return $this->hasMany(Petition::class, 'id_service');
+    }
+
+    public function scopeFilter(Builder $builder, QueryFilter $filters){
+        return $filters->apply($builder);
     }
 }

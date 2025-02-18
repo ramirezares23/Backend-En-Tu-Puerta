@@ -18,11 +18,12 @@ return new class extends Migration
             $table->foreignIdFor(User::class,'id_user')->constrained()->onDelete('cascade');
             $table->bigInteger('amount_cents');
             $table->text('description');
+            $table->text('address');
             
             $table->string('type',20);
             $table->string('area',50);
 
-            $table->timestamp('datetime');
+            $table->date('date');
             $table->string('status',50);
 
             $table->foreignIdFor(Service::class,'id_service')->constrained()->onDelete('cascade');

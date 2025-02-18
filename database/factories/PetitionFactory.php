@@ -22,10 +22,11 @@ class PetitionFactory extends Factory
             'id_user' => User::factory(),
             'amount_cents' => fake()->randomFloat(2, 0, 5000),
             'description' => fake()->sentence(),
+            'address' => fake()->address(),
             'type' => fake()->randomElement(["Belleza"]),
-            'area' => fake()->randomElement(["Peluqueria","Manicura","Pedicura","Estilista general"]),
-            'datetime' => now(),
-            'status' => fake()->randomElement(["Enviada","Aceptada","Sin respuesta"]), //TODO: Corregir
+            'area' => fake()->randomElement(["Peluqueria", "Manicura", "Pedicura", "Estilista general"]),
+            'date' =>  //TODO: Tengo este error, quiero asignar la fecha para mañana
+            'status' => fake()->randomElement(["Enviada", "Aceptada", "Sin respuesta"]), //TODO: Corregir
             'id_service' => Service::factory(),
         ];
     }

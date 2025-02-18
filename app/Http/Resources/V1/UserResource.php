@@ -32,7 +32,9 @@ class UserResource extends JsonResource
                         'punctuation' => $this->punctuation,
                     ]
                 )
-            ]
+            ],
+            'includes' => PetitionResource::collection($this->whenLoaded('petitions'))
+
         ];
     }
 }

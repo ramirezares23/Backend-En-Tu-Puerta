@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Http\Filters\V1\PetitionFilter;
+use App\Http\Filters\V1\QueryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
@@ -24,6 +27,10 @@ class Petition extends Model
     public function service()
     {
         return $this->belongsTo(Service::class,'id_service');
+    }
+    
+    public function scopeFilter(Builder $builder, QueryFilter $filters){
+        return $filters->apply($builder);
     }
 
     //TODO: Visto bueno con equipo

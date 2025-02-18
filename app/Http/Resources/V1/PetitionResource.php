@@ -28,6 +28,7 @@ class PetitionResource extends JsonResource
                 'datetime' => $this->datetime,
                 'status' => $this->status,
                 'service' => $this->id_service,
+                'created_at' => $this->created_at,
             ],
             'relationships' => [
                 'client' => [
@@ -52,21 +53,19 @@ class PetitionResource extends JsonResource
                         'id' => $this->id_service,
                     ],
                     'links' => [
-                        [
-                            'self' => route(
-                                'services.show',
-                                [
-                                    'service' => $this->id_service
-                                ]
-                            )
-                        ]
+                        'self' => route(
+                            'services.show',
+                            [
+                                'service' => $this->id_service
+                            ]
+                        )
                     ]
                 ]
             ],
-            'includes' => [
-                new UserResource($this->user),
-                new ServiceResource($this->service),
-            ],
+            'includes' =>
+                new UserResource($this->whenLoaded('user')),
+            new ServiceResource($this->whenLoaded('service')),
+
             'links' => [
                 [
                     'self' => route(
