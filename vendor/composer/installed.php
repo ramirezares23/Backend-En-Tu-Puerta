@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => 'd79d24cf53d5627a57d3ad4f633af04462b57596',
+        'pretty_version' => 'dev-FEAT/apiServices',
+        'version' => 'dev-FEAT/apiServices',
+        'reference' => '84d9bfda3af3a9cfedba97babab9beed3a07141f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -422,9 +422,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'd79d24cf53d5627a57d3ad4f633af04462b57596',
+            'pretty_version' => 'dev-FEAT/apiServices',
+            'version' => 'dev-FEAT/apiServices',
+            'reference' => '84d9bfda3af3a9cfedba97babab9beed3a07141f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1102,6 +1102,15 @@
             'install_path' => __DIR__ . '/../sebastian/version',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'spatie/laravel-permission' => array(
+            'pretty_version' => '6.15.0',
+            'version' => '6.15.0.0',
+            'reference' => '86074fcfd127f9fa7bcdf550b7c938e3beb0d65f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../spatie/laravel-permission',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'spatie/once' => array(
             'dev_requirement' => false,
