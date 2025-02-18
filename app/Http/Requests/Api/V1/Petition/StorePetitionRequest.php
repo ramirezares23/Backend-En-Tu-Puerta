@@ -29,7 +29,7 @@ class StorePetitionRequest extends FormRequest
             'data.attributes.address' => 'required|string',
             'data.attributes.type' => 'required|string',
             'data.attributes.area' => 'required|string',
-            'data.attributes.date' => ['required|date', Rule::date()->afterToday()],
+            'data.attributes.date' => 'required|date', //TODO: Validar que sea posterior
             'data.attributes.status' => 'required|string|in:Enviada, Aceptada, Sin respuesta',
             'data.attributes.id_service' => 'required|integer',
             'data.relationships.client.data.id' => 'required|integer',

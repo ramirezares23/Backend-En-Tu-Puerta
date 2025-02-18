@@ -16,20 +16,28 @@ class Petition extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id_user',
+        'amount_cents',
         'description',
-        'datetime',
+        'address',
+        'type',
+        'area',
+        'date',
         'status',
+        'id_service',
+
     ];
     public function user()
     {
-        return $this->belongsTo(User::class,'id_user');
+        return $this->belongsTo(User::class, 'id_user');
     }
     public function service()
     {
-        return $this->belongsTo(Service::class,'id_service');
+        return $this->belongsTo(Service::class, 'id_service');
     }
-    
-    public function scopeFilter(Builder $builder, QueryFilter $filters){
+
+    public function scopeFilter(Builder $builder, QueryFilter $filters)
+    {
         return $filters->apply($builder);
     }
 

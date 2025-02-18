@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class,'client_id')->constrained()->onDelete('cascade');
             $table->foreignIdFor(Service::class,'service_id')->constrained()->onDelete('cascade');
             
-            $table->timestamp('datetime');
+            $table->date('date');
             $table->string('status',50);
 
             $table->timestamps();

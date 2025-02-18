@@ -48,19 +48,37 @@ class PetitionController extends ApiController
             ]);
         }
 
+        //Verifico si no existe una solcitud identica en esa fecha
+        $petitionExists = Petition::where('id_user', $request->input('data.relationships.client.data.id'))
+            ->where('date', $request->input('data.attributes.date'))
+            ->where('id_service', $request->input('data.relationships.service.data.id'))
+            ->exists();
+
+        if ($petitionExists) {
+            return response()->json(['error' => 'Ya existe una solicitud identica.'], 409);
+        }
+
         //Verifico si no existe un evento en esa fecha
+        $eventExists = Event::where('provider_id', $request->input('data.relationships.client.data.id'))
+            ->where('date', $request->input('data.attributes.date'))
+            ->where('service_id', $request->input('data.relationships.service.data.id'))
+            ->exists();
+
+        if ($eventExists) {
+            return response()->json(['error' => 'Ya existe un evento programado para esta fecha con el prestador.'], 409);
+        }
 
         //Creo el modelo
         $model = [
-            'id_user' => 'data.relationships.client.data.id',
-            'amount_cents' => 'data.attributes.amount_cents',
-            'description' => 'data.attributes.description',
-            'address' => 'data.attributes.address',
-            'type' => 'data.attributes.type',
-            'area' => 'data.attributes.area',
-            'datetime' => 'data.attributes.datetime',
-            'status' => 'data.attributes.status',
-            'id_service' => 'data.relationships.service.data.id',
+            'id_user' => $request->input('data.relationships.client.data.id'),
+            'amount_cents' => $request->input('data.attributes.amount_cents'),
+            'description' => $request->input('data.attributes.description'),
+            'address' => $request->input('data.attributes.address'),
+            'type' => $request->input('data.attributes.type'),
+            'area' => $request->input('data.attributes.area'),
+            'date' => $request->input('data.attributes.date'),
+            'status' => $request->input('data.attributes.status'),
+            'id_service' => $request->input('data.relationships.service.data.id'),
         ];
 
         //Guardo el modelo

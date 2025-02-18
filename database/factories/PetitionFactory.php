@@ -2,9 +2,11 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
 use App\Models\Service;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Petition>
@@ -25,7 +27,7 @@ class PetitionFactory extends Factory
             'address' => fake()->address(),
             'type' => fake()->randomElement(["Belleza"]),
             'area' => fake()->randomElement(["Peluqueria", "Manicura", "Pedicura", "Estilista general"]),
-            'date' =>  //TODO: Tengo este error, quiero asignar la fecha para mañana
+            'date' => Carbon::now()->addUTCDays(2),
             'status' => fake()->randomElement(["Enviada", "Aceptada", "Sin respuesta"]), //TODO: Corregir
             'id_service' => Service::factory(),
         ];
