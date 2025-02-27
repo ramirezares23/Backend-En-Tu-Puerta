@@ -25,11 +25,11 @@ return new class extends Migration
             $table->string('address', 255)->nullable(); //Lo puede completar una vez registrado
             $table->boolean('terms_and_conditions_accept');
             
-            $table->json('schedules')->nullable(); //Lo puede completar una vez registrado
+            $table->json('schedule')->nullable(); //Lo puede completar una vez registrado
             $table->string('type',20);
             $table->string('area',50);
             
-            $table->json('images_paths')->nullable(); //Lo puede completar una vez registrado
+            $table->json('profile_image_path')->nullable(); //Lo puede completar una vez registrado
             $table->integer('punctuation')->default(0);
             
             $table->timestamps(); // created_at and updated_at

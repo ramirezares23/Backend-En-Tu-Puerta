@@ -21,10 +21,12 @@ return new class extends Migration
             $table->text('address');
             
             $table->string('type',20);
-            $table->string('area',50);
 
             $table->date('date');
             $table->string('status',50);
+
+            $table->time('time'); //HH:MM:SS.
+            $table->text('message');
 
             $table->foreignIdFor(Service::class,'id_service')->constrained()->onDelete('cascade');
 

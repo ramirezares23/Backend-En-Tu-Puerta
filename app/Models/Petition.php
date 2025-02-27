@@ -25,7 +25,8 @@ class Petition extends Model
         'date',
         'status',
         'id_service',
-
+        'time',
+        'message'
     ];
     public function user()
     {

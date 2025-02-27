@@ -15,7 +15,10 @@ class Service extends Model
 
     protected $fillable = [
         'service_name',
-        'service_price'
+        'service_price',
+        'description',
+        'images_path',
+        'duration'
     ];
 
     public function user(){

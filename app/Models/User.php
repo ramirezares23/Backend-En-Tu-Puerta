@@ -26,8 +26,7 @@ class User extends Authenticatable
         'password',
         'address',
         'schedules',
-        'schedules',
-        'images_paths',
+        'profile_image_path',
         'punctuation',
     ];
     public function petitions(){
