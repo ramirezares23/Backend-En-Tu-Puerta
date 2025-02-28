@@ -21,6 +21,13 @@ class ServiceResource extends JsonResource
                 'id_provider'=> $this->id_provider,
                 'service_name'=>$this->service_name,
                 'service_price'=>$this->service_price,
+                'images_path' => $this->images_path,
+                $this->mergeWhen($request->routeIs('services.show'),
+                    [
+                    'description' => $this->description,
+                    'duration' => $this->duration,
+                    ]
+                )
             ],
             'relationships' => [
                 'provider' => [
