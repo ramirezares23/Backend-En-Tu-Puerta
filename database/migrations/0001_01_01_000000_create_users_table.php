@@ -35,7 +35,7 @@ return new class extends Migration
             $table->json('profile_image_path')->nullable(); //Lo puede completar una vez registrado
             $table->integer('punctuation')->default(0);
 
-            $table->boolean('is_verified');
+            $table->boolean('is_verified')->nullable();
             
             $table->timestamps(); // created_at and updated_at
             $table->rememberToken();

@@ -22,13 +22,12 @@ class PetitionFactory extends Factory
     {
         return [
             'id_user' => User::factory(),
-            'amount_cents' => fake()->randomFloat(2, 0, 5000),
             'description' => fake()->sentence(),
-            'address' => fake()->address(),
-            'type' => fake()->randomElement(["Belleza"]),
-            'area' => fake()->randomElement(["Peluqueria", "Manicura", "Pedicura", "Estilista general"]),
+            'type' => fake()->randomElement(["Peluqueria", "Manicura", "Pedicura", "Estilista general"]),
             'date' => Carbon::now()->addUTCDays(2),
             'status' => fake()->randomElement(["Enviada", "Aceptada", "Sin respuesta"]), //TODO: Corregir
+            'time'=> fake()->time(),
+            'message'=> fake()->text(),
             'id_service' => Service::factory(),
         ];
     }
