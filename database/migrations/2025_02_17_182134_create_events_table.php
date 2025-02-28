@@ -23,6 +23,8 @@ return new class extends Migration
             $table->date('date');
             $table->string('status',50);
 
+            $table->time('time');//HH:MM:SS.
+
             $table->timestamps();
 
             //TODO: Visto bueno con equipo

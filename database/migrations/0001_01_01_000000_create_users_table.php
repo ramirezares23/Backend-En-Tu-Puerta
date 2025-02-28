@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('code',8);
             $table->string('first_name',50);
             $table->string('last_name',50);
+
+            $table->string('username',30);
+
             $table->string('email',100)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone_number',15)->unique();
@@ -25,12 +28,14 @@ return new class extends Migration
             $table->string('address', 255)->nullable(); //Lo puede completar una vez registrado
             $table->boolean('terms_and_conditions_accept');
             
-            $table->json('schedules')->nullable(); //Lo puede completar una vez registrado
-            $table->string('type',20);
-            $table->string('area',50);
+            $table->time('start_time')->nullable(); //El cliente no tiene rubro. EL prestador puede completarlo luego de iniciar sesion
+            $table->time('end_time')->nullable(); //El cliente no tiene rubro. EL prestador puede completarlo luego de iniciar sesion
+            $table->string('type',20)->nullable(); // EL cliente no tiene rubro
             
-            $table->json('images_paths')->nullable(); //Lo puede completar una vez registrado
+            $table->json('profile_image_path')->nullable(); //Lo puede completar una vez registrado
             $table->integer('punctuation')->default(0);
+
+            $table->boolean('is_verified');
             
             $table->timestamps(); // created_at and updated_at
             $table->rememberToken();
