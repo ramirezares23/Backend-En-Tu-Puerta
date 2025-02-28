@@ -11,22 +11,24 @@ use Illuminate\Support\Facades\Route;
 // petitions
 // contracts
 
-Route::middleware('auth:sanctum')
-    ->apiResource(
+Route::middleware('auth:sanctum')->group(function(){
+    Route::apiResource(
         'petitions',
         PetitionController::class
-    );
-Route::middleware('auth:sanctum')
-    ->apiResource(
-        'services',
-        ServiceController::class
-    );
-Route::middleware('auth:sanctum')
-    ->apiResource(
-        'users',
-        UserController::class
-    );
+    )->except(['update']);
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+    Route::put('petitions/{petition}',[PetitionController::class,'update']);
+
+    Route::apiResource(
+            'services',
+            ServiceController::class
+        );
+    Route::apiResource(
+            'users',
+            UserController::class
+        );
+
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+});
