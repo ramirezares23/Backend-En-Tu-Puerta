@@ -17,7 +17,7 @@ Route::middleware('auth:sanctum')->group(function(){
         PetitionController::class
     )->except(['update']);
 
-    Route::put('petitions/{petition}',[PetitionController::class,'update']);
+    Route::patch('petitions/{petition}',[PetitionController::class,'update']);
 
     Route::apiResource(
             'services',
