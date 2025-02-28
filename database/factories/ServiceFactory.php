@@ -21,6 +21,9 @@ class ServiceFactory extends Factory
             'id_provider' => User::factory(),
             'service_name' => 'Servicio de ' . fake()->randomElement(["Peluqueria","Manicura","Pedicura","Estilista general"]),
             'service_price' => fake()->randomFloat(2, 0),
+            'description' => fake()->text(),
+            'images_path' => json_encode(fake()->url()),
+            'duration' => fake()->numberBetween(10,300),
         ];
     }
 }

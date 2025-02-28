@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    protected $fillable = [
+        'status'
+    ];
+
     public function provider()
     {
         return $this->belongsTo(User::class,'provider_id');

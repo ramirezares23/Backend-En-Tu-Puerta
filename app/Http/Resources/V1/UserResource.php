@@ -20,15 +20,16 @@ class UserResource extends JsonResource
             'attributes' => [
                 'first_name' => $this->first_name,
                 'last_name' => $this->last_name,
+                'username' => $this->username,
                 'email' => $this->email,
                 'address' => $this->address,
                 $this->mergeWhen(
                     $request->routeIs('users.show'),
                     [
-                        'schedules' => $this->schedules,
+                        'start_time' => $this->start_time,
+                        'end_time' => $this->end_time,
                         'type' => $this->type,
-                        'area' => $this->area,
-                        'images_paths' => $this->images_paths,
+                        'profile_image_path' => $this->images_paths,
                         'punctuation' => $this->punctuation,
                     ]
                 )

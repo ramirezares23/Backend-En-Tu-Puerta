@@ -16,15 +16,15 @@ return new class extends Migration
         Schema::create('petitions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class,'id_user')->constrained()->onDelete('cascade');
-            $table->bigInteger('amount_cents');
             $table->text('description');
-            $table->text('address');
             
             $table->string('type',20);
-            $table->string('area',50);
 
             $table->date('date');
             $table->string('status',50);
+
+            $table->time('time'); //HH:MM:SS. Hora a la que se solicita el servicio
+            $table->text('message');
 
             $table->foreignIdFor(Service::class,'id_service')->constrained()->onDelete('cascade');
 

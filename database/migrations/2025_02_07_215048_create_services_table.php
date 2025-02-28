@@ -16,6 +16,12 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\User::class, 'id_provider')->constrained()->onDelete('cascade');
             $table->string('service_name');
             $table->float('service_price');
+            
+            $table->text('description');
+            $table->json('images_path');
+            $table->integer('duration');
+
+
             $table->timestamps();
         });
     }

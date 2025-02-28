@@ -22,13 +22,15 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name',
         'last_name',
+        'username',
         'email_verified_at',
         'password',
         'address',
-        'schedules',
-        'schedules',
-        'images_paths',
+        'start_time',
+        'end_time',
+        'profile_image_path',
         'punctuation',
+        'is_verified'
     ];
     public function petitions(){
         return $this->hasMany(Petition::class,'id_user');

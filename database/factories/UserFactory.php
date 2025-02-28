@@ -28,6 +28,7 @@ class UserFactory extends Factory
 
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
+            'username' => fake()->userName(),
 
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
@@ -45,13 +46,14 @@ class UserFactory extends Factory
 
             'address' => fake()->address(),
             'terms_and_conditions_accept' => fake()->boolean(),
-            'schedules' => json_encode(fake()->dayOfWeek()),
+            'start_time' => fake()->time(),
+            'end_time' => fake()->time(),
 
-            'type' => fake()->randomElement(["Belleza"]),
-            'area' => fake()->randomElement(["Peluqueria", "Manicura", "Pedicura", "Estilista general"]),
+            'type' => fake()->randomElement(["Peluqueria", "Manicura", "Pedicura", "Estilista general"]),
 
-            'images_paths' => json_encode(fake()->url()),
+            'profile_image_path' => json_encode(fake()->url()),
             'punctuation' => fake()->numberBetween(0, 5),
+            'is_verified'=> fake()->boolean(),
 
             'remember_token' => Str::random(10),
         ];
