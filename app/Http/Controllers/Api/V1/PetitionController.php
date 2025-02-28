@@ -99,10 +99,65 @@ class PetitionController extends ApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePetitionRequest $request, Petition $petition)
+    public function update(UpdatePetitionRequest $request)
     {
-        //
+        // HANDLES PATCH
+
+        // // return 'patch request';
+
+        // VAlidar que id sea numero
+        if (!$request->input('data.id') || !is_numeric($request->input('data.id'))){
+            return response()->json(['error' => 'No se ha encontrado una solicitud con el id ingresado.'], 409);
+        }
+
+        // VAlidar que la pet con ese id exista
+        $petitionExists = Petition::where('id', $request->input('data.id'))
+            ->exists();
+
+        if(!$petitionExists){
+            return response()->json(['error' => 'No existe una solicitud.'], 409);
+        }
+
+        // validar el status sea enviada
+        if ($request->input('data.attributes.status') != 'Enviada') {
+            return response()->json(['error' => 'La solicitud no tiene el estado correspondiente para ser aceptada.'], 409);
+        }
+
+        // Verificar si un evento
+        $eventExists = Event::where('service_id', $request->input('data.relationships.service.data.id'))
+            ->where('date', $request->input('data.attributes.date'))
+            ->where('time', $request->input('data.attributes.time'))
+            ->exists();
+
+        if ($eventExists) {
+            return response()->json(['error' => 'Ya existe un evento programado para esta fecha con el prestador. No se puede aceptar la solicitud.'], 409);
+        }
+        // Modificar solicitud
+
+        
+
+
+
+
+        // Verifico si la peticion existe
+
+        // try{
+        //     $petition = Petition::findOrFail($petition->id);
+            
+
+
+        // }catch (ModelNotFoundException $exception){
+        //     return $this->error('No se ha encontrado la solicitud', 404);
+        // }
+
+        
+        // $petition->update($request->mappedAttributes());
+        // return new PetitionResource($petition);
+
+
     }
+
+
 
     /**
      * Remove the specified resource from storage.
