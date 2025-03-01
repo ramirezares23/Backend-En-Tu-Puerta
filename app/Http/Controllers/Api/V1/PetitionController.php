@@ -99,17 +99,17 @@ class PetitionController extends ApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePetitionRequest $request)
+    public function update(UpdatePetitionRequest $request, Petition $petition)
     {
         // HANDLES PATCH
 
-        // // return 'patch request';
-
+        // return 'patch request';
         // VAlidar que id sea numero
         if (!$request->input('data.id') || !is_numeric($request->input('data.id'))){
             return response()->json(['error' => 'No se ha encontrado una solicitud con el id ingresado.'], 409);
         }
 
+        
         // VAlidar que la pet con ese id exista
         $petitionExists = Petition::where('id', $request->input('data.id'))
             ->exists();
@@ -132,28 +132,26 @@ class PetitionController extends ApiController
         if ($eventExists) {
             return response()->json(['error' => 'Ya existe un evento programado para esta fecha con el prestador. No se puede aceptar la solicitud.'], 409);
         }
+
         // Modificar solicitud
 
-        
+        $petition = Petition::findOrFail($request->input('data.id'));
+        $petition->update(['status'=>'Aceptada']);
 
+        // Creando el Evento
 
+        $service = Service::findOrFail($request->input('data.relationships.service.data.id'));
 
+        $event = Event::create([
+            'provider_id' => $service->id_provider, 
+            'client_id' => $petition->id_user, // Ajusta esto si el cliente es diferente del usuario que crea la petición
+            'service_id' => $petition->id_service,
+            'date' => $petition->date,
+            'time' => $petition->time,
+            'status' => 'Pendiente', // Estado inicial del evento
+        ]);
 
-        // Verifico si la peticion existe
-
-        // try{
-        //     $petition = Petition::findOrFail($petition->id);
-            
-
-
-        // }catch (ModelNotFoundException $exception){
-        //     return $this->error('No se ha encontrado la solicitud', 404);
-        // }
-
-        
-        // $petition->update($request->mappedAttributes());
-        // return new PetitionResource($petition);
-
+        return 'evento creado';
 
     }
 
