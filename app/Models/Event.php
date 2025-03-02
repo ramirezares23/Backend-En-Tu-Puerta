@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    protected $fillable = [
-        'status'
-    ];
+    protected $fillable = ['provider_id', 'client_id', 'service_id', 'date', 'time', 'status'];
+
 
     public function provider()
     {
