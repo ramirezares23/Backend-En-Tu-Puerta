@@ -48,9 +48,10 @@ class PetitionController extends ApiController
             ]);
         }
 
-        //Verifico si no existe una solcitud identica en esa fecha
+        //Verifico si no existe una solicitud identica en esa fecha
         $petitionExists = Petition::where('id_user', $request->input('data.relationships.client.data.id'))
             ->where('date', $request->input('data.attributes.date'))
+            ->where('time', $request->input('data.attributes.time'))
             ->where('id_service', $request->input('data.relationships.service.data.id'))
             ->exists();
 
@@ -58,9 +59,10 @@ class PetitionController extends ApiController
             return response()->json(['error' => 'Ya existe una solicitud identica.'], 409);
         }
 
-        //Verifico si no existe un evento en esa fecha
+        //Verifico si no existe un evento en esa fecha y hora
         $eventExists = Event::where('provider_id', $request->input('data.relationships.client.data.id'))
             ->where('date', $request->input('data.attributes.date'))
+            ->where('time', $request->input('data.attributes.time'))
             ->where('service_id', $request->input('data.relationships.service.data.id'))
             ->exists();
 
@@ -69,15 +71,18 @@ class PetitionController extends ApiController
         }
 
         //Creo el modelo
+
+        //TODO: necesitamos el type? Si es asi hay que traernoslo del id service y del proveedor
         $model = [
-            'id_user' => $request->input('data.relationships.client.data.id'),
+            'id_user' => $request->input('data.attributes.id'),
             'amount_cents' => $request->input('data.attributes.amount_cents'),
             'description' => $request->input('data.attributes.description'),
-            'address' => $request->input('data.attributes.address'),
             'type' => $request->input('data.attributes.type'),
-            'area' => $request->input('data.attributes.area'),
+
             'date' => $request->input('data.attributes.date'),
-            'status' => $request->input('data.attributes.status'),
+            'status' => 'Enviada',
+            'time' => $request->input('data.attributes.time'),
+            'message' => $request->input('data.attributes.message'),
             'id_service' => $request->input('data.relationships.service.data.id'),
         ];
 
@@ -106,7 +111,7 @@ class PetitionController extends ApiController
         // // return 'patch request';
 
         // VAlidar que id sea numero
-        if (!$request->input('data.id') || !is_numeric($request->input('data.id'))){
+        if (!$request->input('data.id') || !is_numeric($request->input('data.id'))) {
             return response()->json(['error' => 'No se ha encontrado una solicitud con el id ingresado.'], 409);
         }
 
@@ -114,7 +119,7 @@ class PetitionController extends ApiController
         $petitionExists = Petition::where('id', $request->input('data.id'))
             ->exists();
 
-        if(!$petitionExists){
+        if (!$petitionExists) {
             return response()->json(['error' => 'No existe una solicitud.'], 409);
         }
 
@@ -134,7 +139,7 @@ class PetitionController extends ApiController
         }
         // Modificar solicitud
 
-        
+
 
 
 
@@ -143,14 +148,14 @@ class PetitionController extends ApiController
 
         // try{
         //     $petition = Petition::findOrFail($petition->id);
-            
+
 
 
         // }catch (ModelNotFoundException $exception){
         //     return $this->error('No se ha encontrado la solicitud', 404);
         // }
 
-        
+
         // $petition->update($request->mappedAttributes());
         // return new PetitionResource($petition);
 
