@@ -3,7 +3,8 @@
 namespace App\Http\Requests\Api\V1\Petition;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
+use Illuminate\Validation\Validator;
+use App\Rules\time;
 
 class StorePetitionRequest extends FormRequest
 {
@@ -24,16 +25,12 @@ class StorePetitionRequest extends FormRequest
     {
         return [
             'data.attributes.id_user' => 'required|integer',
-            'data.attributes.amount_cents' => 'required|integer',
             'data.attributes.description' => 'required|string',
-            'data.attributes.address' => 'required|string',
             'data.attributes.type' => 'required|string',
             'data.attributes.area' => 'required|string',
             'data.attributes.date' => 'required|date', //TODO: Validar que sea posterior
-            'data.attributes.status' => 'required|string|in:Enviada, Aceptada, Sin respuesta',
+            'data.attributes.time' => ['required',new time],
             'data.attributes.id_service' => 'required|integer',
-            'data.relationships.client.data.id' => 'required|integer',
-            'data.relationships.service.data.id' => 'required|integer',
 
         ];
 

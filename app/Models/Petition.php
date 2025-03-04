@@ -16,12 +16,14 @@ class Petition extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id_user',
         'description',
         'type',
         'date',
         'status',
         'time',
-        'message'
+        'message',
+        'id_service'
     ];
     public function user()
     {
