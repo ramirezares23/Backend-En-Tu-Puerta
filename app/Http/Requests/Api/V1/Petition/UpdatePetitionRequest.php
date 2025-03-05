@@ -22,16 +22,17 @@ class UpdatePetitionRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'data.id' => 'required|integer',
             'data.attributes.id_user' => 'sometimes|integer',
             'data.attributes.description' => 'sometimes|string',
             'data.attributes.type' => 'sometimes|string',
-            'data.attributes.date' => 'sometimes|date', //TODO: Validar que sea posterior
-            'data.attributes.status' => 'sometimes|string|in:Enviada, Aceptada, Sin respuesta',
-            'data.attributes.time' => 'sometimes|date_format:H:i:s',
+            'data.attributes.date' => 'required|date', //TODO: Validar que sea posterior
+            'data.attributes.status' => 'required|string|in:Enviada, Aceptada, Sin respuesta',
+            'data.attributes.time' => 'required|date_format:H:i:s',
             'data.attributes.message' => 'sometimes|string',
-            'data.attributes.id_service' => 'sometimes|integer',
-            'data.relationships.client.data.id' => 'sometimes|integer',
-            'data.relationships.service.data.id' => 'sometimes|integer',
+            'data.attributes.id_service' => 'required|integer',
+            'data.relationships.client.data.id' => 'required|integer',
+            'data.relationships.service.data.id' => 'required|integer',
         ];
     }
 }
