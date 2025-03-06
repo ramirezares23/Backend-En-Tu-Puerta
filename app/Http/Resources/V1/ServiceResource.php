@@ -15,19 +15,19 @@ class ServiceResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'type'=>'service',
-            'id'=>$this->id,
+            'type' => 'service',
+            'id' => $this->id,
             'attributes' => [
-                'id_provider'=> $this->id_provider,
-                'service_name'=>$this->service_name,
-                'service_price'=>$this->service_price,
+                'id_provider' => $this->id_provider,
+                'service_name' => $this->service_name,
+                'service_price' => $this->service_price,
                 'images_path' => $this->images_path,
-                $this->mergeWhen($request->routeIs('services.show'),
-                    [
-                    'description' => $this->description,
-                    'duration' => $this->duration,
-                    ]
-                )
+                // $this->mergeWhen($request->routeIs('services.show'), //TODO: Evaluar si se necesita colocar
+                //     [
+                'description' => $this->description,
+                'duration' => $this->duration,
+                // ]
+                // )
             ],
             'relationships' => [
                 'provider' => [
@@ -47,7 +47,7 @@ class ServiceResource extends JsonResource
                     ]
                 ]
             ],
-            'links'=> [
+            'links' => [
                 [
                     'self' => route(
                         'services.show',
