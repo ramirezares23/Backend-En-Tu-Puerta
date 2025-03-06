@@ -25,7 +25,7 @@ class PetitionController extends ApiController
     }
 
     /**
-     * Despliega la informacion para seleccionar el dia y la hora y crear la solicitud
+     * Despliega la informacion para seleccionar el dia y la hora y crear la solicitud 
      */
     public function create($id_service)
     {
