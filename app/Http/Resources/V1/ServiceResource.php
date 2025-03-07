@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,11 +15,17 @@ class ServiceResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $provider = User::find($this->id_provider);
         return [
             'type' => 'service',
             'id' => $this->id,
             'attributes' => [
-                'id_provider' => $this->id_provider,
+                'id_provider' => $provider->id,
+                'firstName_provider' => $provider->first_name,
+                'lastName_provider' => $provider->last_name,
+                'punctuation_provider' => $provider->punctuation,
+                'address_provider' => $provider->address,
+
                 'service_name' => $this->service_name,
                 'service_price' => $this->service_price,
                 'images_path' => $this->images_path,

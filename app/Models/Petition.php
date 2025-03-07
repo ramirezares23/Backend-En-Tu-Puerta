@@ -34,10 +34,18 @@ class Petition extends Model
         return $this->belongsTo(Service::class, 'id_service');
     }
 
+    // provider que quiero implementar
+    public function provider()
+    {
+        return $this->hasOneThrough(User::class, Service::class, 'id', 'id', 'id_service', 'id');
+    }
+
     public function scopeFilter(Builder $builder, QueryFilter $filters)
     {
         return $filters->apply($builder);
     }
+
+    
 
     //TODO: Visto bueno con equipo
 }

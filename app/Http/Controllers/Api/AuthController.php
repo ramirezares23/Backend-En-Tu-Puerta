@@ -31,7 +31,8 @@ class AuthController extends Controller
                     //now()->addMonth() TODO: Visto bueno 
                     // Creo que no queremos que se les cierre la sesion en la app
                     // En la configuracion de sanctum se puede colocar una expiracion default
-                    )->plainTextToken
+                    )->plainTextToken,
+                'id_user' => $user->id
             ]
             );
     }
