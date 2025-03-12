@@ -37,11 +37,6 @@ class PetitionController extends ApiController
         //Fecha del proximo miercoles
         $nextWednesday = new Carbon('next wednesday');
 
-        // Si hoy es miércoles, toma el próximo miércoles de la semana siguiente
-        if ($today->isWednesday()) {
-            $nextWednesday->addWeek();
-        }
-
         $dates = [];
         $currentDate = $today->copy();
 
