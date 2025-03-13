@@ -194,14 +194,8 @@ class PetitionController extends ApiController
         }
 
         //Creo el modelo
-
-        //TODO: necesitamos el type? Si es asi hay que traernoslo del id service y del proveedor
-        // Description que es, la del servicio?
         $model = [
             'id_user' => $request->input('data.attributes.id_user'),
-            'description' => $request->input('data.attributes.description'),
-            'type' => $request->input('data.attributes.type'),
-
             'date' => $request->input('data.attributes.date'),
             'status' => 'Enviada',
             'time' => $request->input('data.attributes.time'),

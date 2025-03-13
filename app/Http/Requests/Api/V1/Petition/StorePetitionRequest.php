@@ -25,9 +25,6 @@ class StorePetitionRequest extends FormRequest
     {
         return [
             'data.attributes.id_user' => 'required|integer',
-            'data.attributes.description' => 'required|string',
-            'data.attributes.type' => 'required|string',
-            'data.attributes.area' => 'required|string',
             'data.attributes.date' => 'required|date', //TODO: Validar que sea posterior
             'data.attributes.time' => ['required',new time],
             'data.attributes.id_service' => 'required|integer',

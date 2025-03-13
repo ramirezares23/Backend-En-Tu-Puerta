@@ -24,8 +24,6 @@ class UpdatePetitionRequest extends FormRequest
         return [
             'data.id' => 'required|integer',
             'data.attributes.id_user' => 'sometimes|integer',
-            'data.attributes.description' => 'sometimes|string',
-            'data.attributes.type' => 'sometimes|string',
             'data.attributes.date' => 'required|date', //TODO: Validar que sea posterior
             'data.attributes.status' => 'required|string|in:Enviada, Aceptada, Sin respuesta',
             'data.attributes.time' => 'required|date_format:H:i:s',

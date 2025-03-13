@@ -22,8 +22,6 @@ class PetitionFactory extends Factory
     {
         return [
             'id_user' => User::factory(),
-            'description' => fake()->sentence(),
-            'type' => fake()->randomElement(["Peluqueria", "Manicura", "Pedicura", "Estilista general"]),
             'date' => Carbon::now()->addUTCDays(2),
             'status' => fake()->randomElement(["Enviada", "Aceptada", "Sin respuesta"]), //TODO: Corregir
             'time'=> fake()->time(),

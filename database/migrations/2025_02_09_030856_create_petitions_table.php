@@ -16,10 +16,7 @@ return new class extends Migration
         Schema::create('petitions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class,'id_user')->constrained()->onDelete('cascade');
-            $table->text('description');
             
-            $table->string('type',20);
-
             $table->date('date');
             $table->string('status',50);
 

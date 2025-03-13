@@ -21,8 +21,6 @@ class PetitionResource extends JsonResource
             'id' => $this->id,
             'attributes' => [
                 'id_user' => $this->id_user,
-                'description' => $this->description,
-                'type' => $this->type,
                 'date' => $this->date,
                 'time' => $this->time,
                 'status' => $this->status,

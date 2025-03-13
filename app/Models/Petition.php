@@ -17,8 +17,6 @@ class Petition extends Model
 
     protected $fillable = [
         'id_user',
-        'description',
-        'type',
         'date',
         'status',
         'time',
