@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\EventController;
 use App\Http\Controllers\Api\V1\PetitionController;
 use App\Http\Controllers\Api\V1\CreatePetitionController;
 use App\Http\Controllers\Api\V1\ServiceController;
@@ -38,4 +39,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+
+    Route::apiResource(
+        'events',
+        EventController::class
+    )->except(['update','destroy']);
 });

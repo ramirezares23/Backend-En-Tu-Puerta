@@ -29,8 +29,6 @@ class UpdatePetitionRequest extends FormRequest
             'data.attributes.time' => 'required|date_format:H:i:s',
             'data.attributes.message' => 'sometimes|string',
             'data.attributes.id_service' => 'required|integer',
-            'data.relationships.client.data.id' => 'required|integer',
-            'data.relationships.service.data.id' => 'required|integer',
         ];
     }
 }

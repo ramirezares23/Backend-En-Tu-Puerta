@@ -26,7 +26,6 @@ class PetitionResource extends JsonResource
                 'status' => $this->status,
                 'message' => $this->message,
                 'id_service' => $this->id_service,
-                'created_at' => $this->created_at,
             ],
             'relationships' => [
                 'client' => [
