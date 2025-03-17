@@ -178,6 +178,9 @@ class PetitionController extends ApiController
             return response()->json(['error' => 'Ya existe una solicitud identica.'], 409);
         }
 
+        /*TODO: Se debe verificar que la hora este comprendida entre el tiempo de inicio 
+                y el de finalizacion segun la duracion aproximada del evento
+        */
         //Verifico si no existe un evento en esa fecha y hora
         $service = Service::findOrFail($request->input('data.attributes.id_service'));
 

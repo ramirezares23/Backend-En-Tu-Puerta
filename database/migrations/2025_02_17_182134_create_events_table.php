@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             
             $table->foreignIdFor(User::class,'provider_id')->constrained()->onDelete('cascade');
-            $table->foreignIdFor(User::class,'client_id')->constrained()->onDelete('cascade');
-            $table->foreignIdFor(Service::class,'service_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(User::class,'client_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Service::class,'service_id')->nullable()->constrained()->onDelete('cascade');
             
+            $table->string('title');
             $table->date('date');
             $table->string('status',50);
 

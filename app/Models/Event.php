@@ -12,6 +12,7 @@ class Event extends Model
         'provider_id',
         'client_id',
         'service_id',
+        'title',
         'date',
         'time',
         'status'

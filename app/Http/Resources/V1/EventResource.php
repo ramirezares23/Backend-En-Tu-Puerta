@@ -23,6 +23,7 @@ class EventResource extends JsonResource
                 'provider_id' => $this->provider_id,
                 'client_id' => $this->client_id,
                 'service_id' => $this->service_id,
+                'title' => $this->title,
                 'date' => $this->date,
                 'time' => $this->time,
                 'status' => $this->status,
@@ -43,7 +44,7 @@ class EventResource extends JsonResource
                         )
                     ]
                 ],
-                'client' => [
+                'client' => $this->client_id ? [
                     'data' => [
                         'type' => 'user',
                         'id' => $this->client_id,
@@ -56,8 +57,8 @@ class EventResource extends JsonResource
                             ]
                         )
                     ]
-                ],
-                'service' => [
+                ]: null,
+                'service' => $this->service_id ? [
                     'data' => [
                         'type' => 'service',
                         'id' => $this->service_id,
@@ -70,7 +71,7 @@ class EventResource extends JsonResource
                             ]
                         )
                     ]
-                ]
+                ] : null
             ],
             'includes' => [
                 new UserResource($this->whenLoaded('provider')),
