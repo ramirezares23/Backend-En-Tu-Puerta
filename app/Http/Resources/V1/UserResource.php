@@ -23,16 +23,11 @@ class UserResource extends JsonResource
                 'username' => $this->username,
                 'email' => $this->email,
                 'address' => $this->address,
-                $this->mergeWhen(
-                    $request->routeIs('users.show'),
-                    [
-                        'start_time' => $this->start_time,
-                        'end_time' => $this->end_time,
-                        'type' => $this->type,
-                        'profile_image_path' => $this->images_paths,
-                        'punctuation' => $this->punctuation,
-                    ]
-                )
+                'start_time' => $this->start_time,
+                'end_time' => $this->end_time,
+                'type' => $this->type,
+                'profile_image_path' => $this->images_paths,
+                'punctuation' => $this->punctuation,
             ],
             'includes' => PetitionResource::collection($this->whenLoaded('petitions'))
 

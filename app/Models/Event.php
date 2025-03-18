@@ -18,7 +18,6 @@ class Event extends Model
         'status'
     ];
 
-
     public function provider()
     {
         return $this->belongsTo(User::class, 'provider_id');
