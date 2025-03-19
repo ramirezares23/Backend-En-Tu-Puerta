@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(FixedEntitiesSeeder::class);
+        
         $users_client = User::factory(5)->create();
 
         $users_workers = User::factory(5)->create();
