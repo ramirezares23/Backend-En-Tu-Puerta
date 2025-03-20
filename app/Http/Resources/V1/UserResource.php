@@ -26,7 +26,7 @@ class UserResource extends JsonResource
                 'start_time' => $this->start_time,
                 'end_time' => $this->end_time,
                 'type' => $this->type,
-                'profile_image_path' => $this->images_paths,
+                'profile_image_path' => $this->profile_image_path,
                 'punctuation' => $this->punctuation,
             ],
             'includes' => PetitionResource::collection($this->whenLoaded('petitions'))
