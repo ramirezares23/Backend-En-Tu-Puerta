@@ -96,7 +96,7 @@ class FixedEntitiesSeeder extends Seeder
             'service_name' => 'Corte de Cabello (Dama)',
             'service_price' => 20.00,
             'description' => 'No incluye lavado. Aplica para cualquier tipo de corte.',
-            'images_path' => json_encode(['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0hXXSC-K5wKTUK1sla186YCmvF7n5a6Ur3A&s', 'https://cosmeticosnikte.com/wp-content/uploads/2024/04/20240402_195148-scaled.jpg']),
+            'images_path' => json_encode(['https://mcbsalondebelleza.com/wp-content/uploads/2021/04/hair-cutting-in-hairdresser-salon-7RCAEVV-scaled.jpg', 'https://cosmeticosnikte.com/wp-content/uploads/2024/04/20240402_195148-scaled.jpg']),
             'duration' => 40,
         ]);
 

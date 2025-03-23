@@ -39,10 +39,31 @@ class UserFactory extends Factory
 
         // Convertir a formato de tiempo
         $endTime = $endTimeCarbon->format('H:i:s');
+
+
+        $profile_image = [
+            'male' => ['https://i2.pickpik.com/photos/711/14/431/smile-profile-face-male-preview.jpg',
+                        'https://imgcdn.stablediffusionweb.com/2024/11/7/118d16ee-5898-46e1-88e2-bb9eaae90e96.jpg',
+                        'https://i.pinimg.com/474x/98/51/1e/98511ee98a1930b8938e42caf0904d2d.jpg'],
+            'female' => [
+                'https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture.jpg',
+                'https://sarahclaysocial.com/wp-content/uploads/2020/10/sarah-clay-3.jpg',
+                'https://img.freepik.com/free-photo/black-woman-s-profile_633478-2780.jpg']
+        ];
+        
+        
+        $gender = fake()->randomElement(['male','female']);
+
+        if ($gender == 'male') {
+            $profile = fake()->randomElement($profile_image['male']);
+        } else {
+            $profile = fake()->randomElement($profile_image['female']);
+        };
+
         return [
             'code' => fake()->numberBetween(25000000, 31000000), //TODO: corregir este
 
-            'first_name' => fake()->firstName(),
+            'first_name' => fake()->firstName($gender),
             'last_name' => fake()->lastName(),
             'username' => fake()->userName(),
 
@@ -65,7 +86,7 @@ class UserFactory extends Factory
 
             'type' => fake()->randomElement(["Peluqueria", "Manicura", "Pedicura", "Estilista general"]),
 
-            'profile_image_path' => json_encode(fake()->url()),
+            'profile_image_path' => json_encode($profile),
             'punctuation' => fake()->numberBetween(0, 5),
             'is_verified' => fake()->boolean(),
 

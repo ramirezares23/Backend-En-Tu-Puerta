@@ -24,14 +24,5 @@ class DatabaseSeeder extends Seeder
         $services = Service::factory(5)->recycle($users_workers)->create();
         
         $petitions = Petition::factory(15)->recycle($users_client, $services)->create();
-
-        // Hay que hacer 1 usuario cliente y 2 usuarios prestador.
-        // Minimo 3 servicios predefinidos para cada usuario prestador
-        //
-        // Esto es un ejemplo de cuando vimos el curso:
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
