@@ -21,11 +21,16 @@ class PetitionResource extends JsonResource
             'id' => $this->id,
             'attributes' => [
                 'id_user' => $this->id_user,
+                'firstname_user' => $this->user->first_name,
+                'lastname_user' => $this->user->last_name,
+                'image_user' => $this->user->profile_image_path,
                 'date' => $this->date,
                 'time' => $this->time,
                 'status' => $this->status,
                 'message' => $this->message,
                 'id_service' => $this->id_service,
+                'name_service' => $this->service->service_name,
+                'id_provider' => $this->provider->id,
             ],
             'relationships' => [
                 'client' => [
