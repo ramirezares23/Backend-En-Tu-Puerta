@@ -52,7 +52,7 @@ class EventController extends ApiController
             'title' => $request->input('data.attributes.title'),
             'date' => $request->input('data.attributes.date'),
             'time' => $request->input('data.attributes.time'),
-            'status' => 'Enviada', // O el estado que desees asignar
+            'status' => 'Pendiente', 
             'client_id' => null, // No se asigna cliente
             'service_id' => null, // No se asigna servicio
         ]);
