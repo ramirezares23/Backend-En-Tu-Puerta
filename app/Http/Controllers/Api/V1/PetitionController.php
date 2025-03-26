@@ -173,6 +173,7 @@ class PetitionController extends ApiController
             ->where('date', $request->input('data.attributes.date'))
             ->where('time', $request->input('data.attributes.time'))
             ->where('id_service', $request->input('data.attributes.id_service'))
+            ->where('status', "Enviada")
             ->exists();
 
         if ($petitionExists) {
